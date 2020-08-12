@@ -1,4 +1,4 @@
-(ns ticket-system.sql.util)
+(ns ticket-system.server.sql.util)
 
 (def db 
   {:classname "org.sqlite.JDBC"

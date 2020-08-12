@@ -1,5 +1,5 @@
-(ns ticket-system.adapter
-  (:require [ticket-system.operator.ticket :as operator]))
+(ns ticket-system.server.adapter
+  (:require [ticket-system.server.operator.ticket :as operator]))
 
 (defn adapter-handler
   [handler]

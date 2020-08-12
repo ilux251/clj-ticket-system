@@ -1,5 +1,5 @@
-(ns ticket-system.operator.ticket
-  (:require [ticket-system.sql.ticket :as ticket]))
+(ns ticket-system.server.operator.ticket
+  (:require [ticket-system.server.sql.ticket :as ticket]))
 
 (defn- ticket-operation
   [op & _params]
@@ -24,7 +24,7 @@
   (not= (ticket-operator :get-ticket "TICKET-1")
         '())
   
-  (= (ticket-operator :get-ticket "TICKET-2")
+  (= (ticket-operator :get-ticket "TICKET-")
      '())
   
   )

@@ -1,6 +1,6 @@
-(ns ticket-system.sql.ticket
+(ns ticket-system.server.sql.ticket
   (:require [clojure.java.jdbc :as j]
-            [ticket-system.sql.util :as db-util]))
+            [ticket-system.server.sql.util :as db-util]))
 
 (defn all-tickets
   []

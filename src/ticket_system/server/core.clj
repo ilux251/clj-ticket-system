@@ -1,8 +1,7 @@
-(ns ticket-system.core
+(ns ticket-system.server.core
   (:require [org.httpkit.server :as server]
             [ring.middleware.defaults :as ring]
-            [ticket-system.handler :as handler])
-  (:gen-class))
+            [ticket-system.server.handler :as handler]))
 
 (defn -main
   [& _args]

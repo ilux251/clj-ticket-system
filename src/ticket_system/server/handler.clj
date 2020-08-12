@@ -1,8 +1,8 @@
-(ns ticket-system.handler
+(ns ticket-system.server.handler
   (:require [compojure.core :as compojure :refer [GET]]
             [compojure.route :as route]
             [ring.middleware.defaults :as ring]
-            [ticket-system.adapter :as adapter]
+            [ticket-system.server.adapter :as adapter]
             [ring.middleware.json :refer [wrap-json-response]]))
 
 (defn- routes
@@ -23,7 +23,7 @@
 (comment
   (require '[ring.mock.request :as mock])
   
-  (let [body (-> (mock/request :get "/ticket/get" (array-map :ticket-nr 1))
+  (let [body (-> (mock/request :get "/ticket/get" (array-map :ticket-nr "TICKET-1"))
                  ((api-handler))
                  :body)]
     body)
