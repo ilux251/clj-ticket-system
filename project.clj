@@ -11,21 +11,24 @@
                  [http-kit "2.3.0"]
                  [ring/ring-json "0.5.0"]
                  [org.clojure/java.jdbc "0.7.5"]
-                 
+                 [org.xerial/sqlite-jdbc "3.7.2"]
+                 [cljs-ajax "0.8.1"]
+                 [day8.re-frame/http-fx "0.2.1"]
+
                  [reagent "0.8.1"]
-                 [re-frame "0.10.6"]]
-  
+                 [re-frame "0.10.6"]
+                 [clj-commons/cljss "1.6.4"]]
+
   :main ^:skip-aot ticket-system.server.core
-  
+
   :target-path "target/%s"
-  
+
   :profiles {:uberjar {:aot :all}
-             :dev {:dependencies [[ring/ring-mock "0.3.2"]
-                                  [org.clojure/clojurescript "1.10.520"]
+             :dev {:dependencies [[org.clojure/clojurescript "1.10.520"]
                                   [com.bhauman/figwheel-main "0.2.0"]
                                   [cider/piggieback "0.4.0"]]
                    :source-paths ["dev"]
-                   :repl-options {:init-ns ticket-system.server.core
-                                  :nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}}
-  
-  :repl-options {:init-ns ticket-system.server.core})
+                   :repl-options {:init-ns ticket-system.frontend.core
+                                  :nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}
+             :dev-server {:dependencies [[ring/ring-mock "0.3.2"]]
+                          :repl-options {:init-ns ticket-system.server.core}}})

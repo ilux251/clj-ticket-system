@@ -9,7 +9,18 @@
   []
   (compojure/routes
    (GET "/ticket/all" [] {:op [:all-tickets]})
-   (GET "/ticket/get" [ticket-nr] {:op [:get-ticket ticket-nr]})))
+   (GET "/ticket/getByTicketNr" [ticket-nr] {:op [:get-ticket ticket-nr]})))
+
+(def ^:private cors-headers
+  {"Access-Control-Allow-Origin"  "http://localhost:9500"
+   "Access-Control-Allow-Headers" "*"
+   "Access-Control-Allow-Methods" "GET, POST, OPTIONS"})
+
+(defn- cors-handler
+  [handler]
+  (fn [request]
+    (let [response (handler request)]
+      (assoc response :headers cors-headers))))
 
 ;; Public
 
@@ -18,7 +29,8 @@
   (-> (routes)
       (adapter/adapter-handler)
       (wrap-json-response)
-      (ring/wrap-defaults ring/api-defaults)))
+      (ring/wrap-defaults ring/api-defaults)
+      (cors-handler)))
 
 (comment
   (require '[ring.mock.request :as mock])

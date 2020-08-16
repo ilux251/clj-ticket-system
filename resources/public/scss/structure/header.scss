@@ -1,0 +1,62 @@
+header
+{
+  display: flex;
+  align-items: center;
+  height: 70px;
+  border-bottom: 2px solid rgba(100, 100, 100, .3);
+
+  .logo-container
+  {
+    width: 150px;
+
+    img
+    {
+      margin: 0 35px;
+      height: 80px;
+    }
+  }
+
+  .searchfield
+  {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: 50px;
+    flex-grow: 1;
+
+    input
+    {
+      width: 400px;
+      line-height: 22px;
+      border: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: rgb(100, 100, 100);
+
+      &::placeholder
+      {
+        color: rgba(100, 100, 100, .5);
+      }
+
+      &:focus
+      {
+        outline: none;
+      }
+    }
+  }
+
+  button
+  {
+    margin-right: 50px;
+
+    &::before
+    {
+      content: "+";
+      height: 30px;
+      width: 30px;
+      position: relative;
+      right: 15px;
+      font-weight: 600;
+    }
+  }
+}

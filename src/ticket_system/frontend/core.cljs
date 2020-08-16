@@ -2,7 +2,8 @@
   (:require [reagent.core :as r]
             [re-frame.core :as rf]
             [goog.dom :as dom]
-            [ticket-system.frontend.panel :refer [panel]]))
+            [ticket-system.frontend.panel :refer [panel]]
+            [ticket-system.frontend.events.tickets :as ticket]))
 
 (defn- get-app-element
   []
@@ -18,4 +19,5 @@
   (mount-app))
 
 (defonce init
-  (mount-app))
+  (do (mount-app)
+      (rf/dispatch [::ticket/get-all-tickets])))

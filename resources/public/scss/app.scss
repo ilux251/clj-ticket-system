@@ -1,0 +1,30 @@
+body
+{
+  padding: 0;
+  margin: 0;
+}
+
+.create-button
+{
+  background-color: #2196f3;
+}
+
+.change-button
+{
+  background-color: #fc4b1f;
+}
+
+button
+{
+  height: 30px;
+  padding: 0 15px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.95em;
+
+  &.button-with-icon
+  {
+    padding-left: 35px;
+  }
+}

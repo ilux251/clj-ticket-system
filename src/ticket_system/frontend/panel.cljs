@@ -1,17 +1,16 @@
-(ns ticket-system.frontend.panel)
+(ns ticket-system.frontend.panel
+  (:require [ticket-system.frontend.view.ticket :as ticket-panel]))
 
-(defn- header
-  []
-  [:header
-   [:h1 "Ticket-System Application"]])
+(defn- operation
+  [panel]
+  panel)
 
-(defn- content
+(defmulti panel-operation operation)
+
+(defmethod panel-operation :ticket
   []
-  [:main
-   [:h2 "Main Content"]])
+  (ticket-panel/render))
 
 (defn panel 
   []
-  [:<>
-   [header]
-   [content]])
+  (panel-operation :ticket))
