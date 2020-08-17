@@ -9,19 +9,25 @@
   [tickets]
   (for [ticket tickets]
     ^{:key (:ticket-nr ticket)}
-    [:div (:ticket-bezeichnung ticket)]))
+    [:div {:class "ticket"}
+     [:div {:class "ticket-nr"} (:ticket-nr ticket)]
+     [:div {:class "ticket-bezeichnung"} (:ticket-bezeichnung ticket)]
+     [:div {:class "ticket-beschreibung"} (:ticket-beschreibung ticket)]]))
 
 (defn- render-tickets
   []
   (let [tickets @(rf/subscribe [::ticket-sub/get-all-tickets])]
-    [:div (ticket tickets)]))
+    [:div {:class "tickets"}
+     (ticket tickets)]))
 
 (defn render
   []
-  [:div
+  [:<>
    [header-view/render]
-   [:main
-    [:div "Ticket-Content"]
-    [render-tickets]
-    [:button {:on-click #(rf/dispatch [::ticket-evt/change-ticket])
-              :class "change-button"} "Change ticket list"]]])
+   [:div {:class "wrapper"}
+    [:nav {:class "sidebar"}
+     "Navbar"]
+    [:main
+     [render-tickets]
+     [:button {:on-click #(rf/dispatch [::ticket-evt/change-ticket])
+               :class "change-button"} "Change ticket list"]]]])

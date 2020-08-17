@@ -28,3 +28,20 @@ button
     padding-left: 35px;
   }
 }
+
+.wrapper
+{
+  display: flex;
+  justify-content: space-between;
+
+  nav
+  {
+    flex-basis: 150px;
+    height: 100vh;
+  }
+
+  main
+  {
+    flex-basis: 80%;
+  }
+}
