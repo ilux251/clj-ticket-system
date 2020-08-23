@@ -17,18 +17,19 @@
 
                  [reagent "0.8.1"]
                  [re-frame "0.10.6"]
-                 [clj-commons/cljss "1.6.4"]]
+                 [clj-commons/cljss "1.6.4"]
+                 [com.andrewmcveigh/cljs-time "0.5.2"]]
 
   :main ^:skip-aot ticket-system.server.core
 
   :target-path "target/%s"
 
   :profiles {:uberjar {:aot :all}
-             :dev {:dependencies [[org.clojure/clojurescript "1.10.520"]
+             :dev {:dependencies [[org.clojure/clojurescript "1.10.764"]
                                   [com.bhauman/figwheel-main "0.2.0"]
                                   [cider/piggieback "0.4.0"]]
-                   :source-paths ["dev"]
-                   :repl-options {:init-ns ticket-system.frontend.core
+                   :source-paths ["src"]
+                   :repl-options {:init-ns user
                                   :nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}
              :dev-server {:dependencies [[ring/ring-mock "0.3.2"]]
                           :repl-options {:init-ns ticket-system.server.core}}})

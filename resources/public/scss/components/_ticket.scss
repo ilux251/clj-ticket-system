@@ -1,0 +1,96 @@
+$ticket-header-height: 26px;
+$ticket-content-height: calc(100% - #{$ticket-header-height});
+
+.tickets
+{
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 70px;
+  flex-wrap: wrap;
+
+  .ticket
+  {
+    flex-basis: 30%;
+    background-color: $card-color;
+    border-radius: 6px;
+    box-shadow: 4px 4px 5px 0px rgba(204,204,204,1);
+    margin-bottom: 50px;
+
+    .ticket-header
+    {
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      max-height: $ticket-header-height;
+
+      .ticket-nr
+      {
+        background-color: $blue;
+        color: #fff;
+        max-width: 120px;
+        overflow: hidden;
+        padding: 0 10px;
+        line-height: 25px;
+        border-top-left-radius: 6px;
+        font-size: .85rem;
+      }
+
+      .ticket-bezeichnung
+      {
+        line-height: 25px;
+        padding-left: 15px;
+      }
+    }
+
+    .ticket-content
+    {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: $ticket-content-height;
+    }
+
+    .ticket-beschreibung
+    {
+      padding: 15px;
+    }
+
+    .ticket-footer
+    {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0 15px 15px 15px;
+
+      .ticket-last-update
+      {
+        color: rgba(87, 96, 111, .6);
+        font-size: .8rem;
+      }
+
+      .ticket-status
+      {
+        color: #fff;
+        padding: 0 10px;
+        line-height: 20px;
+        border-radius: 50px;
+        font-size: .8rem;
+        flex-shrink: 0;
+
+        &.in-progress
+        {
+          background-color: $yellow;
+        }
+
+        &.done
+        {
+          background-color: $green;
+        }
+
+        &.todo
+        {
+          background-color: $blue;
+        }
+      }
+    }
+  }
+}

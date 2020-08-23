@@ -1,6 +1,8 @@
-@import 'components/ticket.scss';
+@import 'variables';
+
+@import 'components/ticket';
 
 @import 'structure/header';
 @import 'structure/main';
 
-@import 'app'
+@import 'app';

@@ -2,16 +2,22 @@ body
 {
   padding: 0;
   margin: 0;
+  background-color: $background-color;
 }
 
 .create-button
 {
-  background-color: #2196f3;
+  background-color: $blue;
 }
 
 .change-button
 {
-  background-color: #fc4b1f;
+  background-color: $green;
+}
+
+.delete-button
+{
+  background-color: $red;
 }
 
 button
@@ -37,11 +43,11 @@ button
   nav
   {
     flex-basis: 150px;
-    height: 100vh;
+    height: calc(100vh - 72px);
   }
 
   main
   {
-    flex-basis: 80%;
+    flex-basis: calc(100% - 200px);
   }
 }
