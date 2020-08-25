@@ -1,5 +1,8 @@
 (ns ticket-system.frontend.panel
-  (:require [ticket-system.frontend.view.ticket :as ticket-panel]))
+  (:require 
+   [re-frame.core :as rf]
+   [ticket-system.frontend.view.ticket :as ticket-panel]
+   [ticket-system.frontend.subscription.app :as app-events]))
 
 (defn- operation
   [panel]
@@ -11,6 +14,19 @@
   []
   (ticket-panel/render))
 
+(defmethod panel-operation :open-ticket
+  []
+  [:div "OPEN TICKET"])
+
+(defmethod panel-operation nil
+  []
+  [:div {:class "error-screen"}
+   "Can't render view"])
+
 (defn panel 
   []
-  (panel-operation :ticket))
+  (let [view @(rf/subscribe [::app-events/current-view])
+        app-state @(rf/subscribe [::app-events/app-state])]
+    (prn app-state)
+    [:<>
+     (panel-operation view)]))

@@ -5,3 +5,8 @@
  ::get-all-tickets
  (fn [db]
    (get-in db [:ticket :tickets])))
+
+(rf/reg-sub
+ ::get-edit-ticket
+ (fn [db]
+   (get-in db [:ticket :edit-ticket])))

@@ -3,7 +3,8 @@
             [re-frame.core :as rf]
             [goog.dom :as dom]
             [ticket-system.frontend.panel :refer [panel]]
-            [ticket-system.frontend.events.tickets :as ticket]))
+            [ticket-system.frontend.events.tickets :as ticket-events]
+            [ticket-system.frontend.events.app :as app-events]))
 
 (defn- get-app-element
   []
@@ -19,5 +20,7 @@
   (mount-app))
 
 (defonce init
-  (do (mount-app)
-      (rf/dispatch [::ticket/get-all-tickets])))
+  (do
+    (rf/dispatch-sync [::ticket-events/get-all-tickets])
+    (rf/dispatch-sync [::app-events/init-db])
+    (mount-app)))
