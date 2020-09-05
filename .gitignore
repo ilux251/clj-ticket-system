@@ -16,3 +16,4 @@ ticket-system.db
 cljs-out
 ticket-system.iml
 .idea
+.sass-cache
