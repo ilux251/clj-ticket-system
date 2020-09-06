@@ -7,6 +7,6 @@
    (get-in db [:ticket :tickets])))
 
 (rf/reg-sub
- ::get-edit-ticket
+ ::edit-ticket
  (fn [db]
    (get-in db [:ticket :edit-ticket])))

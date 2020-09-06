@@ -2,41 +2,20 @@
   (:require 
    [re-frame.core :as rf]
    [reagent.core :as r]
-   [cljs-time.core :as time]
-   [cljs-time.format :as time-format]
    [clojure.string :as cs]
-   [ticket-system.frontend.util :refer [toggle-class]]
+   [ticket-system.frontend.util :refer [time-ago]]
    [ticket-system.frontend.subscription.tickets :as ticket-sub]
    [ticket-system.frontend.events.tickets :as ticket-evt]
    [ticket-system.frontend.view.header :as header-view]))
 
 (defn- open-ticket-event
   [evt]
-  (let [path (-> evt
-                 .-path)
-        ticket-node (-> (take-while #(not= (.-className %) "tickets") path)
-                        last)]
+  (let [currentNode (-> evt
+                        .-target)
+        ticket-node (->> (iterate #(.-parentNode %) currentNode)
+                         (reduce #(if (= (.-className %1) "ticket") (reduced %1) %2)))]
     (.preventDefault evt)
     (rf/dispatch [::ticket-evt/edit-ticket (.getAttribute ticket-node "ticketid")])))
-
-(defn- time-ago
-  [date]
-  (let [time-format (time-format/formatter "yyyyMMdd'T'HHmmss")
-        unparse-date-format (time-format/formatter "dd'/'MM'/'yyyy HH':'mm")
-        parsed-date (time-format/parse time-format date)
-        current-timezone-date (time/minus parsed-date (time/hours 2))
-        unparsed-date (time-format/unparse unparse-date-format parsed-date)
-        time-interval (time/interval current-timezone-date (time/time-now))
-        in-minutes (time/in-minutes time-interval)
-        in-hours (time/in-hours time-interval)]
-    (cond
-      (> in-hours 24) unparsed-date
-      
-      (>= in-hours 1) (str in-hours " hrs ago")
-      
-      (>= in-minutes 1) (str in-minutes " min ago")
-      
-      :just-few-seconds-ago (str "just now"))))
 
 (defn- status
   [status]

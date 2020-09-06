@@ -56,6 +56,10 @@
       (assoc p :name "Alex")
       p))
   
+  (map #(if (= 2 (:id %))
+          (assoc % :name "Ritsch Ulrich")
+          %) people)
+  
   (def list1 '(1 2 3))
   (def list2 '(4 5 6))
   

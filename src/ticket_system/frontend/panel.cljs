@@ -2,6 +2,7 @@
   (:require 
    [re-frame.core :as rf]
    [ticket-system.frontend.view.ticket :as ticket-panel]
+   [ticket-system.frontend.view.open-ticket :as open-ticket-panel]
    [ticket-system.frontend.subscription.app :as app-events]))
 
 (defn- operation
@@ -16,7 +17,7 @@
 
 (defmethod panel-operation :open-ticket
   []
-  [:div "OPEN TICKET"])
+  (open-ticket-panel/render))
 
 (defmethod panel-operation nil
   []
