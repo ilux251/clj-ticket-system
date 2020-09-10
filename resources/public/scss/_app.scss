@@ -5,21 +5,6 @@ body
   background-color: $background-color;
 }
 
-.create-button
-{
-  background-color: $blue;
-}
-
-.change-button
-{
-  background-color: $green;
-}
-
-.delete-button
-{
-  background-color: $red;
-}
-
 button
 {
   height: 30px;
@@ -35,6 +20,32 @@ button
   }
 }
 
+.create-button
+{
+  background-color: $blue;
+}
+
+.change-button
+{
+  background-color: $green;
+}
+
+.back-button
+{
+  background-color: $green;
+  width: 150px;
+}
+
+.delete-button
+{
+  background-color: $red;
+}
+
+header
+{
+  background-color: #fff;
+}
+
 .wrapper
 {
   display: flex;
@@ -42,12 +53,15 @@ button
 
   nav
   {
-    flex-basis: 150px;
-    height: calc(100vh - 72px);
+    width: 100px;
+    height: calc(100vh - 80px);
+    background-color: #fff;
   }
 
   main
   {
     flex-basis: calc(100% - 200px);
+    flex-shrink: 1;
+    margin-right: 50px;
   }
 }

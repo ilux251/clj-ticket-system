@@ -2,16 +2,15 @@ header
 {
   display: flex;
   align-items: center;
-  height: 70px;
-  border-bottom: 2px solid rgba(100, 100, 100, .3);
+  height: 80px;
 
   .logo-container
   {
-    width: 150px;
+    width: 100px;
 
     img
     {
-      margin: 0 35px;
+      margin: 0 10px;
       height: 80px;
     }
   }
@@ -26,7 +25,7 @@ header
 
     input
     {
-      background-color: $background-color;
+      background-color: #fff;
       width: 400px;
       line-height: 22px;
       border: none;
