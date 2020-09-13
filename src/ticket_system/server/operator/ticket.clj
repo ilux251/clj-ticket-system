@@ -13,7 +13,11 @@
 
 (defmethod ticket-operator :get-ticket
   [_ ticket-nr]
-  (ticket/get-ticket ticket-nr))
+  (ticket/ticket-by-ticket-nr ticket-nr))
+
+(defmethod ticket-operator :notes-by-ticket-id
+  [_ ticket-id]
+  (ticket/notes-by-ticket-id ticket-id))
 
 
 (comment
@@ -26,5 +30,7 @@
   
   (= (ticket-operator :get-ticket "TICKET-")
      '())
+  
+  (ticket-operator :notes-by-ticket-id 2)
   
   )

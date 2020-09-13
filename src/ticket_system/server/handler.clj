@@ -9,7 +9,8 @@
   []
   (compojure/routes
    (GET "/ticket/all" [] {:op [:all-tickets]})
-   (GET "/ticket/getByTicketNr" [ticket-nr] {:op [:get-ticket ticket-nr]})))
+   (GET "/ticket/ticketByTicketNr" [ticket-nr] {:op [:get-ticket ticket-nr]})
+   (GET "/ticket/notesByTicketId" [ticket-id] {:op [:notes-by-ticket-id ticket-id]})))
 
 (def ^:private cors-headers
   {"Access-Control-Allow-Origin"  "http://localhost:9500"
