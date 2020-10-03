@@ -24,7 +24,7 @@
       (cs/replace #"-" " ")))
 
 (defn- ticket-template
-  [ticket]
+  []
   (r/create-class
    {:component-did-mount 
     (fn [comp]

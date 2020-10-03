@@ -33,7 +33,6 @@
    [:span {:class "ticket-datum"} (util/time-ago (:last-update ticket))]
    [:div {:class "ticket-beschreibung"}
     (:ticket-beschreibung ticket)]
-   [:div {:class "separator"}]
    [:h2 {:class "container-label"} "Notes"]
    [render-note-section]])
 

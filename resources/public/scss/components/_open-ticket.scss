@@ -38,7 +38,7 @@
 
       .ticket-beschreibung
       {
-        margin: 50px 0;
+        margin: 20px 0 50px 0;
       }
     }
 
@@ -59,22 +59,22 @@
         {
           content: "";
           display: block;
-          width: calc(100% - 160px);
+          width: 180px;
           height: 1px;
-          margin: 40px 80px;
-          background-color: #000;
+          margin: 40px 0;
+          background-color: #b2bec3;
         }
 
         .date
         {
           position: relative;
           font-size: 0.8rem;
+          color: rgba(87, 96, 111, .6);
 
           &> div
           {
             position: absolute;
             top: 20px;
-            left: 80px;
 
             &::before
             {

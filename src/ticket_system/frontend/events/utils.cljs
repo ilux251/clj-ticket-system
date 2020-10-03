@@ -14,12 +14,10 @@
 
 (defn request-function
   [url-path response-path & params]
-  (prn params)
   {:http-xhrio {:method :GET
                 :uri (str "http://localhost:5000/" url-path)
                 :response-format (json-response-format {:keywords? true})
                 :params params
-                :body params
                 :content-type :json
                 :headers {"Accept" "application/json" :content-type "application/json;charset=utf-8"}
                 :on-success [:success-response response-path]

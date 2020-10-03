@@ -14,9 +14,11 @@
    [:div {:class "logo-container"}
     [:img {:src "img/logo.png"
            :alt "Logo"}]]
-   [:div {:class "searchfield"}
+   [:div {:class "searchfield fa"}
     [:input {:type :text
              :placeholder "Nach Tickets suchen"
              :on-change #(rf/dispatch [::header-evts/set-global-search (-> % .-target .-value)])}]
     [sub-global-search]]
-   [:button {:class "create-button button-with-icon"} "New Ticket"]])
+   [:button {:class "create-button button-with-icon"}
+    [:i {:class "fas fa-plus"}]
+    [:span "New Ticket"]]])

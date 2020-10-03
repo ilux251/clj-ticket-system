@@ -24,10 +24,9 @@
   [:div {:class "error-screen"}
    "Can't render view"])
 
-(defn panel 
+(defn panel
   []
   (let [view @(rf/subscribe [::app-events/current-view])
         app-state @(rf/subscribe [::app-events/app-state])]
-    (prn app-state)
     [:<>
      (panel-operation view)]))

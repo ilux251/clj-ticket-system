@@ -23,6 +23,12 @@ header
     margin-left: 50px;
     flex-grow: 1;
 
+    &::before
+    {
+      content: "\f002";
+      margin-right: 15px;
+    }
+
     input
     {
       background-color: #fff;
@@ -49,14 +55,9 @@ header
   {
     margin-right: 50px;
 
-    &::before
+    i
     {
-      content: "+";
-      height: 30px;
-      width: 30px;
-      position: relative;
-      right: 15px;
-      font-weight: 600;
+      margin-right: 15px;
     }
   }
 }
