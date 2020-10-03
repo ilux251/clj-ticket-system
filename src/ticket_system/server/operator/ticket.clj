@@ -19,6 +19,10 @@
   [_ ticket-id]
   (ticket/notes-by-ticket-id ticket-id))
 
+(defmethod ticket-operator :count-notes-by-ticket-nr
+  [_]
+  (ticket/count-notes-by-ticket-nr))
+
 
 (comment
   
@@ -31,6 +35,10 @@
   (= (ticket-operator :get-ticket "TICKET-")
      '())
   
-  (ticket-operator :notes-by-ticket-id 2)
+  (not= (ticket-operator :notes-by-ticket-id 2)
+        '())
+  
+  (not= (ticket-operator :count-notes-by-ticket-nr)
+        '())
   
   )

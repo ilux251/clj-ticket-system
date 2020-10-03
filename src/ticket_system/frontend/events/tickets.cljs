@@ -2,18 +2,8 @@
   (:require
    [day8.re-frame.http-fx]
    [re-frame.core :as rf]
-   [ajax.core :refer [json-response-format]]
-   [ticket-system.frontend.events.app :as app-events]))
-
-(rf/reg-event-db
- :success-response
- (fn [db [_ result]]
-   (assoc-in db [:ticket :tickets] result)))
-
-(rf/reg-event-db
- :error-response
- (fn [db [_ result]]
-   (assoc db :last-error result)))
+   [ticket-system.frontend.events.app :as app-events]
+   [ticket-system.frontend.events.utils :as util]))
 
 (rf/reg-event-db
  ::edit-ticket
@@ -22,6 +12,7 @@
          ticket (-> (filter #(= (str (:id %)) ticket-id) tickets)
                     first)]
      (rf/dispatch [::app-events/change-view :open-ticket])
+     (rf/dispatch [::get-notes-by-ticket-id ticket-id])
      (assoc-in db [:ticket :edit-ticket] ticket))))
 
 (rf/reg-event-db
@@ -36,13 +27,12 @@
 
 (rf/reg-event-fx
  ::get-all-tickets
- (fn [_ _]
-   {:http-xhrio {:method :GET
-                 :uri "http://localhost:5000/ticket/all"
-                 :response-format (json-response-format {:keywords? true})
-                 :on-success [:success-response]
-                 :on-failure [:error-response]}}))
+ (fn [_ _] (util/request-function "ticket/all" [:ticket :tickets])))
 
+(rf/reg-event-fx
+ ::get-notes-by-ticket-id
+ (fn [_ [_ ticket-id]]
+   (util/request-function "ticket/notesByTicketId" [:ticket :current-notes] {:ticket-id ticket-id})))
 
 (comment
   

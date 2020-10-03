@@ -10,3 +10,8 @@
  ::edit-ticket
  (fn [db]
    (get-in db [:ticket :edit-ticket])))
+
+(rf/reg-sub
+ ::notes-by-ticket
+ (fn [db]
+   (get-in db [:ticket :current-notes])))

@@ -10,6 +10,8 @@
       padding: 20px;
       background-color: #fff;
       height: calc(100vh - 150px);
+      max-height: calc(100vh - 150px);
+      overflow: auto;
 
       h2
       {
@@ -43,6 +45,44 @@
     .ticket-information 
     {
       width: calc(100% - 610px);
+    }
+
+    .ticket-notes
+    {
+      margin-top: 20px;
+
+      .note
+      {
+        position: relative;
+
+        &::after
+        {
+          content: "";
+          display: block;
+          width: calc(100% - 160px);
+          height: 1px;
+          margin: 40px 80px;
+          background-color: #000;
+        }
+
+        .date
+        {
+          position: relative;
+          font-size: 0.8rem;
+
+          &> div
+          {
+            position: absolute;
+            top: 20px;
+            left: 80px;
+
+            &::before
+            {
+              content: "Last update: ";
+            }
+          }
+        }
+      }
     }
 
     .ticket-tasks
