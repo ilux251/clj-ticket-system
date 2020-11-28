@@ -11,3 +11,8 @@
  ::app-state
  (fn [db]
    db))
+
+(rf/reg-sub
+ ::popup
+ (fn [db]
+   (get db :popup)))

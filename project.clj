@@ -32,8 +32,6 @@
                                   [com.bhauman/figwheel-main "0.2.0"]
                                   [cider/piggieback "0.4.0"]
                                   [figwheel-sidecar "0.5.18"]]
-                   :source-paths ["dev"]
-                   :repl-options {:init-ns dev.user
-                                  :nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}
+                   :repl-options {:nrepl-middleware [cider.piggieback/wrap-cljs-repl]}}
              :dev-server {:dependencies [[ring/ring-mock "0.3.2"]]
                           :repl-options {:init-ns ticket-system.server.core}}})

@@ -3,7 +3,8 @@
    [re-frame.core :as rf]
    [ticket-system.frontend.view.ticket :as ticket-panel]
    [ticket-system.frontend.view.open-ticket :as open-ticket-panel]
-   [ticket-system.frontend.subscription.app :as app-events]))
+   [ticket-system.frontend.subscription.app :as app-sub]
+   [ticket-system.frontend.template.popup :as popup]))
 
 (defn- operation
   [panel]
@@ -24,9 +25,18 @@
   [:div {:class "error-screen"}
    "Can't render view"])
 
+(defn- render-background
+  []
+  (let [popup @(rf/subscribe [::app-sub/popup])]
+    [:div
+     (when (not (nil? popup))
+       [:div {:class "background"}])]))
+
 (defn panel
   []
-  (let [view @(rf/subscribe [::app-events/current-view])
-        app-state @(rf/subscribe [::app-events/app-state])]
+  (let [view @(rf/subscribe [::app-sub/current-view])
+        app-state @(rf/subscribe [::app-sub/app-state])]
     [:<>
-     (panel-operation view)]))
+     (panel-operation view)
+     (popup/render-popup)
+     [render-background]]))

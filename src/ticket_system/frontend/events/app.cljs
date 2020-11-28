@@ -10,3 +10,8 @@
  ::change-view
  (fn [db [_ view]]
    (assoc db :view view)))
+
+(rf/reg-event-db
+ ::set-popup
+ (fn [db [_ popup]]
+   (assoc db :popup popup)))
