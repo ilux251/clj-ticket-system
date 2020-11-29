@@ -36,6 +36,7 @@
   []
   (let [view @(rf/subscribe [::app-sub/current-view])
         app-state @(rf/subscribe [::app-sub/app-state])]
+    (prn app-state)
     [:<>
      (panel-operation view)
      (popup/render-popup)

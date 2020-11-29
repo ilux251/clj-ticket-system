@@ -15,3 +15,8 @@
  ::set-popup
  (fn [db [_ popup]]
    (assoc db :popup popup)))
+
+(rf/reg-event-db
+ ::set-popup-values
+ (fn [db [_ key popup-name value]]
+   (assoc-in db [:popup-values popup-name key] value)))

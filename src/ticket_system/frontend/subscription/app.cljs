@@ -16,3 +16,8 @@
  ::popup
  (fn [db]
    (get db :popup)))
+
+(rf/reg-sub
+ ::popup-values
+ (fn [db [_ popup-name]]
+   (get-in db [:popup-values popup-name])))
